@@ -8,19 +8,18 @@ class Employee {
   }
   // Employee prideti metoda work() kuris prideda tiek valandu prie hoursWorked, kiek paduodam i argumenta.
   work(hours) {
-    const workHours = (this.hoursWorked = this.hoursWorked + hours);
-    console.log("workHours ===", workHours);
-    return workHours;
+    this.hoursWorked += hours;
+    console.log(`${this.firstName} has worked for ${this.hoursWorked} hours`);
   }
   // sukurti metoda calcPay() kuris paskaiciuoja kiek darbuotojui priklauso pinigu uz isdirbtas valandas.
   calcPay() {
-    let sumForWorkHours = this.hoursWorked * this.hourlyPay;
-    console.log("sumForWorkHours ===", sumForWorkHours);
-    return sumForWorkHours;
+    let pay = this.hoursWorked * this.hourlyPay;
+    return pay;
   }
   // sukurti metoda payForWork() kuris grazina kiek pinigu sumoketi ir nunulina valandas (hoursWorked)
   payForWork() {
-    this.calcPay();
+    let salary = this.calcPay();
     this.hoursWorked = 0;
+    return salary;
   }
 }
