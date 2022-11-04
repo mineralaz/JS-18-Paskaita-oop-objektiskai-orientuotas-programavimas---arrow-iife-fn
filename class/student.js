@@ -1,11 +1,15 @@
+"use strict";
+console.log("student.js");
 class Student {
   // constructor vyksta sukuriant nauja objekta su new
   constructor(argName, argYear, argHomeTown) {
-    // console.log("hello");
+    console.log("student created");
+    this.studList = document.getElementById("studs");
     this.name = argName;
     this.year = argYear;
     this.town = argHomeTown;
     this.printStudent();
+    this.courses = ["English"];
   }
   sayHi() {
     // studentas iskonsolina ir pasisako apie save
@@ -17,14 +21,23 @@ class Student {
   printStudent() {
     const liEl = document.createElement("li");
     liEl.textContent = this.sayHi();
-    studsEl.append(liEl);
+    this.studList.append(liEl);
+  }
+  addCourse(subject) {
+    this.courses.push(subject);
+    console.log(subject, "was added to", this.name);
+  }
+  // removeCourse() -
+  removeCourse(subject) {
+    // pasitikrinti ar yra toks kursas kursuose
+    if (this.courses.includes(subject) === true) {
+      // jei yra - pasalinam ir pranesam su konsole
+      this.courses = this.courses.filter((course) => course !== subject);
+      console.log(subject, "has been removed from", this.name);
+      return this.courses;
+    } else {
+      // jei nera - pranesam, kad tokio nera
+      console.log(subject, "has not been found between courses");
+    }
   }
 }
-const studsEl = document.getElementById("studs");
-const st1 = new Student("James", 2, "London");
-// console.log("st1 ===", st1);
-// st1.sayHi();
-
-const st2 = new Student("Jane", 4, "Kaunas");
-
-// console.log("st2 ===", st2);
