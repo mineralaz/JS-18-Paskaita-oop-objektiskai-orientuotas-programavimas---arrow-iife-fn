@@ -9,7 +9,10 @@ class Student {
     this.year = argYear;
     this.town = argHomeTown;
     this.printStudent();
-    this.courses = ["English"];
+    this.courses = [];
+  }
+  getMathMarks() {
+    return this.courses[0].avg();
   }
   sayHi() {
     // studentas iskonsolina ir pasisako apie save
@@ -30,7 +33,7 @@ class Student {
   // removeCourse() -
   removeCourse(subject) {
     // pasitikrinti ar yra toks kursas kursuose
-    if (this.courses.includes(subject) === true) {
+    if (this.courses.includes(subject)) {
       // jei yra - pasalinam ir pranesam su konsole
       this.courses = this.courses.filter((course) => course !== subject);
       console.log(subject, "has been removed from", this.name);
